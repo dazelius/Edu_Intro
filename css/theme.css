@@ -516,9 +516,11 @@
   margin-right: auto;
 }
 .play-emoji {
-  font-size: 2.8em;
+  font-size: 1.2em;
   margin-bottom: 12px;
-  letter-spacing: 16px;
+  letter-spacing: 4px;
+  color: var(--text-muted);
+  font-weight: 300;
 }
 .play-card h3 {
   font-size: 1.2em;
@@ -554,7 +556,12 @@
   transition: border-color 0.3s;
 }
 .loop-node:hover { border-color: var(--accent); }
-.loop-icon { font-size: 2em; margin-bottom: 8px; }
+.loop-icon {
+  font-size: 1.6em;
+  margin-bottom: 8px;
+  font-weight: 900;
+  color: var(--accent);
+}
 .loop-label {
   font-size: 0.85em;
   font-weight: 700;
@@ -597,7 +604,6 @@
   justify-content: center;
   z-index: 2;
 }
-.role-center-icon { font-size: 2em; }
 .role-center-label {
   font-size: 0.65em;
   color: #fff;
@@ -699,8 +705,10 @@
   margin-bottom: 28px;
 }
 .intent-compass {
-  font-size: 3.5em;
+  font-size: 2em;
   margin-bottom: 20px;
+  color: var(--accent);
+  font-weight: 300;
 }
 
 /* ═══════════════════════════════
