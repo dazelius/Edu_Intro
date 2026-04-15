@@ -1146,7 +1146,46 @@
 }
 
 /* ═══════════════════════════════
-   S05 – Mindset Shift
+   S05 – AI Era
+   ═══════════════════════════════ */
+.ai-era-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 36px 0 32px;
+  max-width: 780px;
+}
+.ai-era-card {
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  text-align: center;
+  transition: border-color 0.3s;
+}
+.ai-era-card:hover {
+  border-color: var(--accent);
+}
+.ai-era-icon {
+  font-size: 1.6em;
+  font-weight: 900;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.ai-era-title {
+  font-size: 0.85em;
+  font-weight: 700;
+  color: var(--heading);
+  margin-bottom: 8px;
+}
+.ai-era-desc {
+  font-size: 0.7em;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════
+   S06 – Mindset Shift
    ═══════════════════════════════ */
 .mindset-shift {
   display: flex;
