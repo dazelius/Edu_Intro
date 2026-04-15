@@ -133,6 +133,39 @@
   background: rgba(0, 212, 170, 0.04);
 }
 
+/* ═══════════════════════════════
+   Language Toggle
+   ═══════════════════════════════ */
+.lang-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #aaa;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s, background 0.2s;
+  backdrop-filter: blur(8px);
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.lang-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+[data-lang="en"] .lang-kr { display: none !important; }
+[data-lang="kr"] .lang-en { display: none !important; }
+
 /* ── Base ── */
 .reveal-viewport { background: var(--bg); }
 

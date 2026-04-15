@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en" data-lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +12,9 @@
   <link rel="stylesheet" href="css/theme.css">
 </head>
 <body>
+
+<!-- Language Toggle -->
+<button id="lang-toggle" class="lang-toggle" aria-label="Toggle language">EN</button>
 
 <!-- TOC Toggle Button -->
 <button id="toc-toggle" class="toc-toggle" aria-label="Table of Contents">☰</button>
@@ -145,6 +148,22 @@ const slideFiles = [
     if (e.key === 't' && !e.ctrlKey && !e.metaKey && !e.altKey) {
       panel.classList.toggle('open');
       toggle.classList.toggle('hidden');
+    }
+  });
+
+  // Language toggle
+  const langBtn = document.getElementById('lang-toggle');
+  langBtn.addEventListener('click', () => {
+    const html = document.documentElement;
+    const isEn = html.getAttribute('data-lang') === 'en';
+    html.setAttribute('data-lang', isEn ? 'kr' : 'en');
+    html.setAttribute('lang', isEn ? 'ko' : 'en');
+    langBtn.textContent = isEn ? 'KR' : 'EN';
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'l' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+      langBtn.click();
     }
   });
 
