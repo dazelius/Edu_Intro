@@ -133,6 +133,43 @@ const slideFiles = [
       toggle.classList.toggle('hidden');
     }
   });
+
+  // Auto-scroll for career timeline (slide 02)
+  function initTimelineScroll() {
+    const wrap = document.querySelector('.ct-scroll-wrap');
+    const tl = document.getElementById('career-timeline');
+    if (!wrap || !tl) return;
+
+    const overflow = tl.scrollHeight - wrap.clientHeight;
+    if (overflow > 0) {
+      const duration = Math.max(6, overflow / 30);
+      tl.style.setProperty('--scroll-distance', `-${overflow}px`);
+      tl.style.setProperty('--scroll-duration', `${duration}s`);
+    }
+  }
+
+  Reveal.on('slidechanged', (e) => {
+    const wrap = document.querySelector('.ct-scroll-wrap');
+    if (!wrap) return;
+    wrap.classList.remove('scrolling');
+
+    // slide index 1 = instructor slide
+    if (e.indexh === 1) {
+      const tl = document.getElementById('career-timeline');
+      if (tl) tl.style.transform = '';
+      initTimelineScroll();
+      requestAnimationFrame(() => wrap.classList.add('scrolling'));
+    }
+  });
+
+  // also trigger if we start on slide 1
+  if (Reveal.getIndices().h === 1) {
+    setTimeout(() => {
+      initTimelineScroll();
+      const wrap = document.querySelector('.ct-scroll-wrap');
+      if (wrap) wrap.classList.add('scrolling');
+    }, 500);
+  }
 })();
 </script>
 </body>

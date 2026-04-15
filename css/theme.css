@@ -338,21 +338,43 @@
 .instructor-name {
   font-size: 0.9em;
   color: var(--text);
-  margin: 2px 0 16px;
+  margin: 2px 0 8px;
   font-weight: 500;
+}
+
+.ct-scroll-wrap {
+  position: relative;
+  overflow: hidden;
+  max-height: 440px;
+  margin-top: 4px;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 6%,
+    black 88%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 6%,
+    black 88%,
+    transparent 100%
+  );
 }
 
 .career-timeline {
   position: relative;
   padding-left: 32px;
-  margin-top: 8px;
+  padding-top: 12px;
+  padding-bottom: 24px;
 }
 .career-timeline::before {
   content: '';
   position: absolute;
   left: 7px;
-  top: 4px;
-  bottom: 4px;
+  top: 0;
+  bottom: 0;
   width: 2px;
   background: linear-gradient(180deg, var(--accent), var(--mint));
   border-radius: 2px;
@@ -361,16 +383,22 @@
 .ct-item {
   position: relative;
   display: flex;
-  align-items: baseline;
-  gap: 16px;
-  margin-bottom: 10px;
-  padding: 6px 0;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+  padding: 10px 16px 10px 0;
+  border-radius: var(--radius);
+  transition: background 0.3s;
+}
+.ct-item:hover {
+  background: rgba(255, 255, 255, 0.02);
 }
 .ct-item::before {
   content: '';
   position: absolute;
   left: -29px;
-  top: 12px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -379,17 +407,15 @@
 }
 .ct-item--current::before {
   background: var(--mint);
-  box-shadow: 0 0 8px var(--mint-glow);
+  box-shadow: 0 0 10px var(--mint-glow);
   width: 10px;
   height: 10px;
-  left: -30px;
-  top: 11px;
 }
 
 .ct-period {
-  font-size: 0.55em;
+  font-size: 0.52em;
   color: var(--text-muted);
-  min-width: 90px;
+  min-width: 80px;
   font-weight: 500;
   flex-shrink: 0;
   font-variant-numeric: tabular-nums;
@@ -398,12 +424,36 @@
   color: var(--mint);
 }
 
+.ct-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  padding: 5px;
+}
+.ct-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0.9) contrast(1.1);
+}
+.ct-item--current .ct-logo {
+  border-color: rgba(0, 212, 170, 0.3);
+  box-shadow: 0 0 12px rgba(0, 212, 170, 0.1);
+}
+
 .ct-body {
   flex: 1;
   min-width: 0;
 }
 .ct-company {
-  font-size: 0.72em;
+  font-size: 0.7em;
   font-weight: 700;
   color: var(--heading);
   margin-bottom: 2px;
@@ -414,17 +464,17 @@
 
 .ct-row {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
   flex-wrap: wrap;
 }
 .ct-project {
-  font-size: 0.6em;
+  font-size: 0.58em;
   color: var(--text);
   font-weight: 400;
 }
 .ct-position {
-  font-size: 0.55em;
+  font-size: 0.5em;
   padding: 2px 10px;
   border-radius: 10px;
   background: rgba(108, 99, 255, 0.12);
@@ -436,8 +486,19 @@
   color: var(--mint);
 }
 .ct-engine {
-  font-size: 0.5em;
+  font-size: 0.48em;
   color: var(--text-muted);
+}
+
+/* Auto-scroll animation */
+@keyframes ct-scroll {
+  0%   { transform: translateY(0); }
+  10%  { transform: translateY(0); }
+  90%  { transform: translateY(var(--scroll-distance)); }
+  100% { transform: translateY(var(--scroll-distance)); }
+}
+.ct-scroll-wrap.scrolling .career-timeline {
+  animation: ct-scroll var(--scroll-duration) ease-in-out forwards;
 }
 
 /* ═══════════════════════════════
