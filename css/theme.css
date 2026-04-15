@@ -19,6 +19,120 @@
   --radius-sm: 8px;
 }
 
+/* ═══════════════════════════════
+   TOC Panel
+   ═══════════════════════════════ */
+.toc-toggle {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #aaa;
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s, background 0.2s;
+  backdrop-filter: blur(8px);
+}
+.toc-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+.toc-toggle.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toc-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100vh;
+  background: rgba(11, 11, 18, 0.95);
+  backdrop-filter: blur(16px);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  z-index: 200;
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.toc-panel.open {
+  transform: translateX(0);
+}
+
+.toc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.toc-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.toc-close {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+.toc-close:hover { color: #fff; }
+
+.toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 12px 0;
+  overflow-y: auto;
+  flex: 1;
+}
+.toc-list li { margin: 0; }
+
+.toc-section-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 14px 20px 4px;
+}
+
+.toc-list a {
+  display: block;
+  padding: 7px 20px 7px 28px;
+  font-size: 12.5px;
+  color: #888;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.15s, background 0.15s;
+  border-left: 2px solid transparent;
+}
+.toc-list a:hover {
+  color: #ddd;
+  background: rgba(255, 255, 255, 0.03);
+}
+.toc-list a.active {
+  color: var(--mint);
+  border-left-color: var(--mint);
+  background: rgba(0, 212, 170, 0.04);
+}
+
 /* ── Base ── */
 .reveal-viewport { background: var(--bg); }
 
