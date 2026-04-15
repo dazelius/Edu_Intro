@@ -333,13 +333,84 @@
 }
 
 /* ═══════════════════════════════
-   S02 – Instructor Timeline
+   S02 – Instructor Split Layout
    ═══════════════════════════════ */
 .instructor-name {
   font-size: 0.9em;
   color: var(--text);
   margin: 2px 0 8px;
   font-weight: 500;
+}
+
+.intro-split {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 36px;
+  margin-top: 8px;
+  height: 440px;
+}
+
+/* Left column: highlights */
+.intro-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 8px;
+}
+.hl-item {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.hl-num {
+  font-size: 2em;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--accent), var(--mint));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+.hl-text {
+  font-size: 0.6em;
+  color: var(--text);
+  line-height: 1.35;
+}
+.hl-divider {
+  width: 40px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 6px 0;
+}
+.hl-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.hl-list li {
+  font-size: 0.58em;
+  color: var(--text);
+  line-height: 1.4;
+  padding-left: 14px;
+  position: relative;
+}
+.hl-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* Right column */
+.intro-scroll-col {
+  overflow: hidden;
 }
 
 .ct-scroll-wrap {
@@ -488,6 +559,24 @@
 .ct-engine {
   font-size: 0.48em;
   color: var(--text-muted);
+}
+
+/* Project screenshot strip inside timeline */
+.ct-proj-strip {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  padding-bottom: 16px;
+}
+.ct-proj-img {
+  width: 120px;
+  height: 75px;
+  border-radius: var(--radius-sm);
+  background-color: rgba(255, 255, 255, 0.03);
+  background-size: cover;
+  background-position: center;
+  border: 1px solid var(--surface-border);
+  flex-shrink: 0;
 }
 
 /* Auto-scroll animation */
