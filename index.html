@@ -33,11 +33,12 @@
     <li><a data-slide="1">02 · Why This Class?</a></li>
     <li><a data-slide="2">03 · Growth of the Industry</a></li>
     <li><a data-slide="3">04 · Curse of the Blockbuster</a></li>
-    <li><a data-slide="4">05 · The Age of AI</a></li>
-    <li><a data-slide="5">06 · New Mindset</a></li>
+    <li><a data-slide="4">05 · The Evidence</a></li>
+    <li><a data-slide="5">06 · The Age of AI</a></li>
+    <li><a data-slide="6">07 · New Mindset</a></li>
 
     <li class="toc-section-label">Instructor</li>
-    <li><a data-slide="6">07 · Instructor</a></li>
+    <li><a data-slide="7">08 · Instructor</a></li>
   </ul>
 </nav>
 
@@ -52,9 +53,10 @@ const slideFiles = [
   'slides/02_why_this_class.html',
   'slides/03_past_hierarchy.html',
   'slides/04_ai_disruption.html',
-  'slides/05_ai_era.html',
-  'slides/06_mindset_shift.html',
-  'slides/07_instructor.html',
+  'slides/05_blockbuster_cases.html',
+  'slides/06_ai_era.html',
+  'slides/07_mindset_shift.html',
+  'slides/08_instructor.html',
 ];
 
 (async () => {
@@ -150,8 +152,8 @@ const slideFiles = [
     if (!wrap) return;
     wrap.classList.remove('scrolling');
 
-    // slide index 6 = instructor slide
-    if (e.indexh === 6) {
+    // slide index 7 = instructor slide
+    if (e.indexh === 7) {
       const tl = document.getElementById('career-timeline');
       if (tl) tl.style.transform = '';
       initTimelineScroll();
@@ -159,8 +161,8 @@ const slideFiles = [
     }
   });
 
-  // also trigger if we start on slide 6
-  if (Reveal.getIndices().h === 6) {
+  // also trigger if we start on slide 7
+  if (Reveal.getIndices().h === 7) {
     setTimeout(() => {
       initTimelineScroll();
       const wrap = document.querySelector('.ct-scroll-wrap');
