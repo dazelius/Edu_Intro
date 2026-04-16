@@ -1361,3 +1361,97 @@
   font-weight: 500;
   line-height: 1.6;
 }
+
+/* ═══════════════════════════════
+   S07 – Workflow Revolution
+   ═══════════════════════════════ */
+.wf-compare {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 20px 0 24px;
+  max-width: 820px;
+}
+
+.wf-block {
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius);
+  padding: 20px 28px;
+}
+.wf-block--past {
+  opacity: 0.55;
+}
+.wf-block--now {
+  border-color: rgba(108, 99, 255, 0.3);
+  background: rgba(108, 99, 255, 0.04);
+}
+
+.wf-label {
+  font-size: 0.5em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.wf-block--now .wf-label {
+  color: var(--accent);
+}
+
+.wf-title {
+  font-size: 1em;
+  font-weight: 800;
+  color: var(--heading);
+  margin-bottom: 12px;
+}
+
+.wf-flow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.wf-step {
+  font-size: 0.7em;
+  padding: 6px 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  font-weight: 500;
+}
+.wf-step--highlight {
+  background: rgba(108, 99, 255, 0.12);
+  border-color: rgba(108, 99, 255, 0.3);
+  color: var(--accent);
+  font-weight: 600;
+}
+.wf-arrow {
+  font-size: 1em;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.wf-divider {
+  text-align: center;
+  font-size: 1.4em;
+  color: var(--accent);
+  padding: 8px 0;
+  font-weight: 300;
+}
+
+.wf-note {
+  font-size: 0.65em;
+  color: var(--mint);
+  font-weight: 600;
+  margin: 10px 0 0;
+}
+
+.wf-conclusion {
+  font-size: 1.05em;
+  text-align: center;
+  color: var(--text);
+  font-weight: 500;
+  line-height: 1.6;
+}
