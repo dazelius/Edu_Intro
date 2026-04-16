@@ -670,92 +670,138 @@
 }
 
 /* ═══════════════════════════════
-   S03 – Designer Role Hub
+   S03 – Designer Role Tree
    ═══════════════════════════════ */
-.role-hub {
-  position: relative;
-  width: 100%;
-  height: 400px;
+.hub-map {
+  display: grid;
+  grid-template-columns: 1fr 40px auto 40px 1fr;
+  align-items: center;
+  height: 380px;
+  max-width: 960px;
   margin: 8px auto 0;
+  position: relative;
 }
-.role-hub::before {
-  content: '';
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px; height: 300px;
-  border: 1px dashed rgba(108, 99, 255, 0.15);
-  border-radius: 50%;
-  pointer-events: none;
-}
-.role-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100px;
-  height: 100px;
+
+.hub-center {
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--accent), var(--mint));
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-shadow:
+    0 0 30px rgba(108, 99, 255, 0.25),
+    0 0 60px rgba(108, 99, 255, 0.08);
+  position: relative;
   z-index: 2;
-  box-shadow: 0 0 30px rgba(108, 99, 255, 0.3), 0 0 60px rgba(108, 99, 255, 0.1);
+  justify-self: center;
 }
-.role-center-label {
-  font-size: 0.5em;
+.hub-center-text {
+  font-size: 0.48em;
   color: #fff;
-  font-weight: 700;
+  font-weight: 800;
   text-align: center;
-  line-height: 1.2;
-}
-.role-spokes {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-}
-.role-spoke {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform-origin: 0 0;
-  transform:
-    rotate(var(--angle))
-    translate(155px)
-    rotate(calc(-1 * var(--angle)));
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 0.55em;
-  font-weight: 600;
-  white-space: nowrap;
-  margin-top: -16px;
-  margin-left: -52px;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.role-spoke:hover {
-  transform:
-    rotate(var(--angle))
-    translate(160px)
-    rotate(calc(-1 * var(--angle)));
-  box-shadow: 0 0 12px rgba(108, 99, 255, 0.3);
+  line-height: 1.25;
+  letter-spacing: 0.02em;
 }
 
-.role-spoke--accent {
-  background: rgba(108, 99, 255, 0.1);
+.hub-trunk {
+  width: 100%;
+  height: 1px;
+  position: relative;
+}
+.hub-trunk--left {
+  background: linear-gradient(270deg, rgba(108, 99, 255, 0.4), rgba(108, 99, 255, 0.08));
+}
+.hub-trunk--right {
+  background: linear-gradient(90deg, rgba(0, 212, 170, 0.4), rgba(0, 212, 170, 0.08));
+}
+
+.hub-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  padding: 12px 0;
+}
+.hub-col--left {
+  align-items: flex-end;
+  padding-right: 20px;
+}
+.hub-col--right {
+  align-items: flex-start;
+  padding-left: 20px;
+}
+
+.hub-col--left::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 6%; bottom: 6%;
+  width: 1px;
+  background: linear-gradient(180deg,
+    transparent, rgba(108, 99, 255, 0.25) 10%, rgba(108, 99, 255, 0.25) 90%, transparent
+  );
+}
+.hub-col--right::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6%; bottom: 6%;
+  width: 1px;
+  background: linear-gradient(180deg,
+    transparent, rgba(0, 212, 170, 0.25) 10%, rgba(0, 212, 170, 0.25) 90%, transparent
+  );
+}
+
+.hub-item {
+  font-size: 0.6em;
+  font-weight: 600;
+  padding: 7px 18px;
+  border-radius: 8px;
+  white-space: nowrap;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.01em;
+}
+.hub-col--left .hub-item:hover { transform: translateX(-3px); }
+.hub-col--right .hub-item:hover { transform: translateX(3px); }
+.hub-item:hover { box-shadow: 0 0 16px rgba(108, 99, 255, 0.15); }
+
+.hub-col--left .hub-item::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 20px;
+  height: 1px;
+  background: rgba(108, 99, 255, 0.2);
+}
+.hub-col--right .hub-item::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  width: 20px;
+  height: 1px;
+  background: rgba(0, 212, 170, 0.2);
+}
+
+.hub-item--accent {
+  background: rgba(108, 99, 255, 0.06);
   color: var(--accent);
-  border: 1px solid rgba(108, 99, 255, 0.25);
+  border: 1px solid rgba(108, 99, 255, 0.18);
 }
-.role-spoke--mint {
-  background: rgba(0, 212, 170, 0.1);
+.hub-item--mint {
+  background: rgba(0, 212, 170, 0.06);
   color: var(--mint);
-  border: 1px solid rgba(0, 212, 170, 0.25);
+  border: 1px solid rgba(0, 212, 170, 0.18);
 }
-.role-spoke--coral {
-  background: rgba(255, 107, 107, 0.1);
+.hub-item--coral {
+  background: rgba(255, 107, 107, 0.06);
   color: var(--coral);
-  border: 1px solid rgba(255, 107, 107, 0.25);
+  border: 1px solid rgba(255, 107, 107, 0.18);
 }
 
 /* ═══════════════════════════════
@@ -1597,59 +1643,64 @@ section.present .slide-desc {
   animation: fadeUp 0.5s ease-out 0.2s both;
 }
 
-/* ── 03 Past Hierarchy: hub burst ── */
-@keyframes centerBurst {
-  0%  { opacity: 0; transform: translate(-50%, -50%) scale(0); }
-  60% { opacity: 1; transform: translate(-50%, -50%) scale(1.12); }
-  100%{ opacity: 1; transform: translate(-50%, -50%) scale(1); }
+/* ── 03 Past Hierarchy: tree reveal ── */
+@keyframes centerPop {
+  0%  { opacity: 0; transform: scale(0); }
+  60% { opacity: 1; transform: scale(1.08); }
+  100%{ opacity: 1; transform: scale(1); }
 }
-@keyframes ringReveal {
-  from { opacity: 0; transform: translate(-50%, -50%) scale(0.4); }
-  to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+@keyframes lineGrow {
+  from { transform: scaleX(0); opacity: 0; }
+  to   { transform: scaleX(1); opacity: 1; }
 }
-@keyframes spokeOut {
-  from {
-    opacity: 0;
-    transform:
-      rotate(var(--angle))
-      translate(0)
-      rotate(calc(-1 * var(--angle)))
-      scale(0.6);
-  }
-  to {
-    opacity: 1;
-    transform:
-      rotate(var(--angle))
-      translate(155px)
-      rotate(calc(-1 * var(--angle)))
-      scale(1);
-  }
+@keyframes trunkGrow {
+  from { opacity: 0; clip-path: inset(45% 0 45% 0); }
+  to   { opacity: 1; clip-path: inset(0 0 0 0); }
+}
+@keyframes nodeLeft {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes nodeRight {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
-.role-center { opacity: 0; }
-.role-hub::before { opacity: 0; }
-.role-spoke {
-  opacity: 0;
-  transform:
-    rotate(var(--angle))
-    translate(0)
-    rotate(calc(-1 * var(--angle)));
-}
+.hub-center { opacity: 0; }
+.hub-trunk { transform: scaleX(0); opacity: 0; }
+.hub-trunk--left { transform-origin: right center; }
+.hub-trunk--right { transform-origin: left center; }
+.hub-col--left::after,
+.hub-col--right::before { opacity: 0; }
+.hub-item { opacity: 0; }
 
-section.present .role-center {
-  animation: centerBurst 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+section.present .hub-center {
+  animation: centerPop 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
 }
-section.present .role-hub::before {
-  animation: ringReveal 0.5s ease-out 0.5s both;
+section.present .hub-trunk--left {
+  animation: lineGrow 0.4s ease-out 0.55s both;
 }
-section.present .role-spoke {
-  animation: spokeOut 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: calc(0.5s + var(--i) * 0.07s);
+section.present .hub-trunk--right {
+  animation: lineGrow 0.4s ease-out 0.6s both;
+}
+section.present .hub-col--left::after {
+  animation: trunkGrow 0.4s ease-out 0.75s both;
+}
+section.present .hub-col--right::before {
+  animation: trunkGrow 0.4s ease-out 0.8s both;
+}
+section.present .hub-col--left .hub-item {
+  animation: nodeLeft 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(0.8s + var(--i) * 0.06s);
+}
+section.present .hub-col--right .hub-item {
+  animation: nodeRight 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(0.85s + (var(--i) - 6) * 0.06s);
 }
 
 .hierarchy-note { opacity: 0; }
 section.present .hierarchy-note {
-  animation: fadeUp 0.5s ease-out 1.6s both;
+  animation: fadeUp 0.5s ease-out 1.5s both;
 }
 
 /* ── 04 Disruption: sequential cards ── */
